@@ -75,7 +75,7 @@ canvas:
     line: false
     point: false
     linestrip: false
-  pixel_smoothing: false
+  pixel_smoothing: true
 
 shortcuts:
   close: Ctrl+W

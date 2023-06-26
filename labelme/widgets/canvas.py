@@ -58,6 +58,7 @@ class Canvas(QtWidgets.QWidget):
                 "linestrip": False,
             },
         )
+        self.pixel_smoothing = kwargs.pop("pixel_smoothing", True)
         super(Canvas, self).__init__(*args, **kwargs)
         # Initialise local state.
         self.mode = self.EDIT
@@ -625,9 +626,10 @@ class Canvas(QtWidgets.QWidget):
 
         p = self._painter
         p.begin(self)
-        p.setRenderHint(QtGui.QPainter.Antialiasing)
-        p.setRenderHint(QtGui.QPainter.HighQualityAntialiasing)
-        p.setRenderHint(QtGui.QPainter.SmoothPixmapTransform)
+        if self.pixel_smoothing:
+            p.setRenderHint(QtGui.QPainter.Antialiasing)
+            p.setRenderHint(QtGui.QPainter.HighQualityAntialiasing)
+            p.setRenderHint(QtGui.QPainter.SmoothPixmapTransform)
 
         p.scale(self.scale, self.scale)
         p.translate(self.offsetToCenter())

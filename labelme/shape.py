@@ -121,12 +121,13 @@ class Shape(object):
         self.points.insert(i, point)
 
     def removePoint(self, i):
-        if not self.canAddPoint():
-            logger.warning(
-                "Cannot remove point from: shape_type=%r",
-                self.shape_type,
-            )
-            return
+        pass
+        #if not self.canAddPoint():
+        #    logger.warning(
+        #        "Cannot remove point from: shape_type=%r",
+        #        self.shape_type,
+        #    )
+        #    return
 
         if self.shape_type == "polygon" and len(self.points) <= 3:
             logger.warning(
